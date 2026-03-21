@@ -1,0 +1,42 @@
+# VLA Training Configuration
+# ==========================
+
+# 数据集配置
+dataset:
+  name: "lerobot/pusht"
+  image_key: "observation.image"
+  state_key: "observation.state"
+  action_key: "action"
+
+# 模型配置
+model:
+  state_dim: 2
+  action_dim: 2
+  hidden_dim: 512
+  use_resnet: true
+  use_se_block: true
+
+# 训练配置
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  gradient_clip: 1.0
+  
+# 学习率调度
+scheduler:
+  warmup_epochs: 5
+  cosine_annealing: true
+  
+# 数据增强
+augmentation:
+  random_crop: true
+  color_jitter: true
+  horizontal_flip: true
+  
+# 输出配置
+output:
+  checkpoint_dir: "outputs/checkpoints_enhanced"
+  log_dir: "outputs/logs"
+  visualization_dir: "outputs/visualizations"
