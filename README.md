@@ -3,12 +3,13 @@
 🤖 **深度优化的 VLA 模型用于机器人磨削系统**
 
 [![License: Apache 2.0   许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]（https://opensource.org/licenses/Apache-2.0）
-[![Python 3.12+   Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)](https://pytorch.org/)
+[![Python 3.12+   Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)](https://pytorch.org/)
 
 ## 📋 项目简介
 
 本项目实现了一个深度优化的 VLA（Visual-Language-Action）模型，专门用于机器人磨削任务。基于 LeRobot 框架和 PushT 数据集，实现了像素级动作预测。
+由https://github.com/datawhalechina/every-embodied这个项目而来
 
 ### ✨ 主要特性
 
@@ -25,7 +26,7 @@
 | 指标 | 目标 | 实际 |
 |------|------|------|
 | 像素误差 | < 10px | **4.68px** ✅ |
-| MSE Loss | < 5.0 | **4.12** ✅ || MSE Loss | < 5.0 | **4.12** ✅ |
+| MSE Loss | < 5.0 | **4.12** ✅ || MSE Loss | < 5.0 | **4.12** ✅ || MSE Loss | < 5.0 | **4.12** ✅ || MSE Loss | < 5.0 | **4.12** ✅ |
 | 训练时间 | - | ~12 小时 |
 
 ## 📁 项目结构
