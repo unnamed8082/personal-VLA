@@ -1,9 +1,9 @@
-# VLA - Visual-Language-Action for Grinding System
+# VLA - Visual-Language-Action for Grinding SystemVLA——研磨系统的视觉语言动作
 
 🤖 **深度优化的 VLA 模型用于机器人磨削系统**
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![License: Apache 2.0   许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]（https://opensource.org/licenses/Apache-2.0）
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svg)](https://pytorch.org/)
 
 ## 📋 项目简介
@@ -12,7 +12,7 @@
 
 ### ✨ 主要特性
 
-- **ResNet-34 Backbone**: 更强的视觉特征提取能力
+- **ResNet-34 Backbone   ResNet-34骨干**: 更强的视觉特征提取能力
 - **SE Block 注意力机制**: Squeeze-and-Excitation 模块提升关键特征
 - **Dropout 正则化**: 防止过拟合，提升泛化能力
 - **Cosine Annealing + Warmup**: 智能学习率调度
@@ -25,30 +25,34 @@
 | 指标 | 目标 | 实际 |
 |------|------|------|
 | 像素误差 | < 10px | **4.68px** ✅ |
-| MSE Loss | < 5.0 | **4.12** ✅ |
+| MSE Loss | < 5.0 | **4.12** ✅ || MSE Loss | < 5.0 | **4.12** ✅ |
 | 训练时间 | - | ~12 小时 |
 
 ## 📁 项目结构
-VLA/ 
-    ├── projects/grinding_system/ # 磨削系统核心代码 │
-                  ├── train_lerobot_vla_enhanced.py # 主训练脚本 │
-                  ├── EnhancedVLAModel.py # 模型定义 │ 
-                  ├── test_enhanced_inference.py # 推理测试 │ 
-                  └── visualize_predictions.py # 可视化脚本 
-      ├── lerobot/datasets/ # LeRobot 数据集处理 │ 
-                          └── lerobot_dataset.py 
-      ├── outputs/checkpoints_enhanced/ # 预训练模型 │
-                                      ├── best_model_enhanced.pt # 最佳模型权重 │
-                                      └── normalization_stats.json # 归一化参数 
-      ├── config.yaml # 配置文件 
-      ├── requirements.txt # Python 依赖
-      └── README.md # 本文件
+VLA\
+├── projects/
+│   └── grinding_system/
+│       ├── train_lerobot_vla_enhanced.py          # 主训练脚本
+│       ├── EnhancedVLAModel.py                  # 模型定义
+│       ├── test_enhanced_inference.py           # 测试脚本
+│       └── visualize_predictions.py             # 可视化脚本
+├── lerobot/
+│   └── datasets/
+│       └── lerobot_dataset.py                   # 数据集处理
+├── outputs/
+│   └── checkpoints_enhanced/
+│       ├── best_model_enhanced.pt               # 最佳模型检查点
+│       ├── normalization_stats.json             # 归一化参数
+│       └── training_log.json                    # 训练日志
+├── README.md                                  # 项目说明
+├── requirements.txt                           # 依赖包
+└── config.yaml                                # 配置文件
 
 ## 🚀 快速开始
 
 ### 1. 环境安装
 
-```bash
+```bash   ”“bash
 # 克隆仓库
 git clone https://github.com/你的用户名/VLA.git
 cd VLA
@@ -60,11 +64,11 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 
 # 安装依赖
-pip install -r requirements.txt
+pip install -r requirements.txtPIP install -r requirements.txt
 2. 使用预训练模型推理
 # 测试增强版模型
-python projects/grinding_system/test_enhanced_inference.py \
-    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt
+python projects/grinding_system/test_enhanced_inference.py \Python projects/grinding_system/test_enhanced_inference.py \
+    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt——输出/ checkpoints_enhanced / best_model_enhanced.pt检查站
 3. 训练自己的模型
 # 使用默认配置训练
 python projects/grinding_system/train_lerobot_vla_enhanced.py
