@@ -3,8 +3,8 @@
 🤖 **深度优化的 VLA 模型用于机器人磨削系统**
 
 [![License: Apache 2.0   许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]（https://opensource.org/licenses/Apache-2.0）
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svg)](https://pytorch.org/)
+[![Python 3.12+   Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)](https://pytorch.org/)
 
 ## 📋 项目简介
 
@@ -31,22 +31,24 @@
 ## 📁 项目结构
 VLA\
 ├── projects/
-│   └── grinding_system/
+│   └── grinding_system/│├──grinding_system/
 │       ├── train_lerobot_vla_enhanced.py          # 主训练脚本
 │       ├── EnhancedVLAModel.py                  # 模型定义
 │       ├── test_enhanced_inference.py           # 测试脚本
 │       └── visualize_predictions.py             # 可视化脚本
 ├── lerobot/
-│   └── datasets/
+│   └── datasets/│├──datasets/
 │       └── lerobot_dataset.py                   # 数据集处理
 ├── outputs/
 │   └── checkpoints_enhanced/
-│       ├── best_model_enhanced.pt               # 最佳模型检查点
+│       ├── best_model_enhanced.pt               # 最佳模型检查点（这个是二进制文件，太大了我没上传，可以自己跑）
 │       ├── normalization_stats.json             # 归一化参数
 │       └── training_log.json                    # 训练日志
 ├── README.md                                  # 项目说明
 ├── requirements.txt                           # 依赖包
 └── config.yaml                                # 配置文件
+<img width="400" height="456" alt="image" src="https://github.com/user-attachments/assets/fec074a8-83ff-4ed8-a17f-a19e419a359c" />   /比;
+
 
 ## 🚀 快速开始
 
@@ -67,26 +69,26 @@ venv\Scripts\activate  # Windows
 pip install -r requirements.txtPIP install -r requirements.txt
 2. 使用预训练模型推理
 # 测试增强版模型
-python projects/grinding_system/test_enhanced_inference.py \Python projects/grinding_system/test_enhanced_inference.py \
-    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt——输出/ checkpoints_enhanced / best_model_enhanced.pt检查站
+python projects/grinding_system/test_enhanced_inference.py \Python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \ python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \
+    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt——输出/ checkpoints_enhanced / best_model_enhanced.pt检查站——检查点输出/ checkpoints_enhanced/best_model_enhanced.pt检查站。输出/ checkpoints_enhanced/best_model_enhanced.pt检查站——检查点输出/ checkpoints_enhanced/best_model_enhanced.pt检查站。输出/ checkpoints_enhanced/best_model_enhanced.pt检查站
 3. 训练自己的模型
 # 使用默认配置训练
-python projects/grinding_system/train_lerobot_vla_enhanced.py
+python projects/grinding_system/train_lerobot_vla_enhanced.pypython项目/ grinding_system / train_lerobot_vla_enhanced.py
 
 # 自定义配置训练
-python projects/grinding_system/train_lerobot_vla_enhanced.py \
-    --epochs 100 \
-    --batch-size 8 \
-    --learning-rate 0.0002 \
-    --save-dir outputs/my_checkpoints
+python projects/grinding_system/train_lerobot_vla_enhanced.py \Python projects/grinding_system/ train_lerobot_vla_enhancedpy \
+    --epochs 100 \   ——epoch 100 \
+    --batch-size 8 \   ——批处理大小8 \
+    --learning-rate 0.0002 \   ——学习率0.0002 \
+    --save-dir outputs/my_checkpoints——/ my_checkpoints save-dir输出——save-dir outputs/my_checkpoints—&mdash；/ my_checkpoint save-dir输出
 4. 可视化预测结果
-python projects/grinding_system/visualize_predictions.py \
-    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt \
-    --save-dir outputs/visualizations
+python projects/grinding_system/visualize_predictions.py \Python projects/grinding_system/visualize_predictions.py \python projects/grinding_system/visualize_predictions.py \ python projects/grinding_system/visualize_predictions.py \
+    --checkpoint outputs/checkpoints_enhanced/best_model_enhanced.pt \——checkpoint输出/checkpoints_enhanced/best_model_enhanced.pt \checkpoint输出/checkpoints_enhanced/best_model_enhanced.pt \
+    --save-dir outputs/visualizations——save-dir输出/可视化
 📊 模型架构
 输入图像 (3×H×W)
     ↓
-ResNet-34 Backbone
+ResNet-34 Backbone   ResNet-34骨干
     ↓
 SE Block 注意力
     ↓
