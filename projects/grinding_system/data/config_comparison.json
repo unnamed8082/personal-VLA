@@ -1,0 +1,98 @@
+[
+  {
+    "name": "\u7cbe\u7ec6\u6253\u78e8",
+    "config": {
+      "target_force": 15.0,
+      "force_threshold_contact": 2.0,
+      "force_threshold_grinding": 15.0,
+      "force_kp": 0.1,
+      "path_step_over": 0.005,
+      "path_velocity": 0.03,
+      "path_smooth_window": 3,
+      "quality_threshold": 0.6,
+      "grinding_area_percentile": 70,
+      "simulation_timestep": 0.01,
+      "real_time_factor": 1.0
+    },
+    "result": {
+      "completed": true,
+      "steps": 10000,
+      "force_stats": {
+        "mean_fz": 15.00378647997999,
+        "std_fz": 1.001396056515305,
+        "max_fz": 18.92479301914812,
+        "min_fz": 11.417583446335964
+      },
+      "path_metrics": {
+        "total_length": 49.407902432581395,
+        "estimated_time": 1646.930081086046,
+        "waypoints": 10000,
+        "avg_segment_length": 0.004941284371695309
+      }
+    }
+  },
+  {
+    "name": "\u6807\u51c6\u6253\u78e8",
+    "config": {
+      "target_force": 20.0,
+      "force_threshold_contact": 2.0,
+      "force_threshold_grinding": 15.0,
+      "force_kp": 0.1,
+      "path_step_over": 0.01,
+      "path_velocity": 0.05,
+      "path_smooth_window": 3,
+      "quality_threshold": 0.5,
+      "grinding_area_percentile": 70,
+      "simulation_timestep": 0.01,
+      "real_time_factor": 1.0
+    },
+    "result": {
+      "completed": true,
+      "steps": 2500,
+      "force_stats": {
+        "mean_fz": 20.02563123497983,
+        "std_fz": 1.0058362960814315,
+        "max_fz": 23.19240453901422,
+        "min_fz": 16.555130400627867
+      },
+      "path_metrics": {
+        "total_length": 24.40378220598429,
+        "estimated_time": 488.0756441196858,
+        "waypoints": 2500,
+        "avg_segment_length": 0.009765419050013721
+      }
+    }
+  },
+  {
+    "name": "\u5feb\u901f\u6253\u78e8",
+    "config": {
+      "target_force": 25.0,
+      "force_threshold_contact": 2.0,
+      "force_threshold_grinding": 15.0,
+      "force_kp": 0.1,
+      "path_step_over": 0.02,
+      "path_velocity": 0.1,
+      "path_smooth_window": 3,
+      "quality_threshold": 0.4,
+      "grinding_area_percentile": 70,
+      "simulation_timestep": 0.01,
+      "real_time_factor": 1.0
+    },
+    "result": {
+      "completed": true,
+      "steps": 625,
+      "force_stats": {
+        "mean_fz": 25.037640935527055,
+        "std_fz": 0.936701498959205,
+        "max_fz": 27.631801396456108,
+        "min_fz": 22.296471470215184
+      },
+      "path_metrics": {
+        "total_length": 11.89554175279979,
+        "estimated_time": 118.95541752799791,
+        "waypoints": 625,
+        "avg_segment_length": 0.01906336819358941
+      }
+    }
+  }
+]

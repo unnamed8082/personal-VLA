@@ -1,0 +1,16 @@
+{
+  "workspace_coupling": 0.23193359375,
+  "n_arms": 2,
+  "task_assignments": [
+    {
+      "arm_id": "arm_1",
+      "n_waypoints": 50
+    },
+    {
+      "arm_id": "arm_2",
+      "n_waypoints": 50
+    }
+  ],
+  "plan_success": true,
+  "rl_trained": true
+}

@@ -1,0 +1,19 @@
+{
+  "params": {
+    "config_id": 22,
+    "target_force": 20.0,
+    "path_step_over": 0.01,
+    "path_velocity": 0.07,
+    "quality_threshold": 0.4
+  },
+  "metrics": {
+    "execution_time": 348.6254600854898,
+    "path_length": 24.40378220598429,
+    "waypoints": 2500,
+    "mean_force": 20.004955185676838,
+    "force_std": 0.9941496077298239,
+    "surface_quality": 0.485884728165781,
+    "grinding_coverage": 3000
+  },
+  "score": 0.3580281751605032
+}

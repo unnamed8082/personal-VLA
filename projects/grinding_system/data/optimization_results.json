@@ -1,0 +1,555 @@
+{
+  "optimization_config": {
+    "target_force_range": [
+      15.0,
+      25.0,
+      5.0
+    ],
+    "path_step_over_range": [
+      0.005,
+      0.015,
+      0.005
+    ],
+    "path_velocity_range": [
+      0.03,
+      0.08,
+      0.02
+    ],
+    "quality_threshold_range": [
+      0.4,
+      0.6,
+      0.1
+    ],
+    "weight_time": 0.3,
+    "weight_quality": 0.4,
+    "weight_force_stability": 0.3,
+    "max_execution_time": 600.0,
+    "min_quality": 0.5,
+    "max_force_variation": 3.0
+  },
+  "best_config": {
+    "params": {
+      "config_id": 22,
+      "target_force": 20.0,
+      "path_step_over": 0.01,
+      "path_velocity": 0.07,
+      "quality_threshold": 0.4
+    },
+    "metrics": {
+      "execution_time": 348.6254600854898,
+      "path_length": 24.40378220598429,
+      "waypoints": 2500,
+      "mean_force": 20.004955185676838,
+      "force_std": 0.9941496077298239,
+      "surface_quality": 0.485884728165781,
+      "grinding_coverage": 3000
+    },
+    "score": 0.3580281751605032
+  },
+  "all_results": [
+    {
+      "rank": 1,
+      "config_id": 22,
+      "params": {
+        "config_id": 22,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 348.6254600854898,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 20.004955185676838,
+        "force_std": 0.9941496077298239,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.3580281751605032
+    },
+    {
+      "rank": 2,
+      "config_id": 11,
+      "params": {
+        "config_id": 11,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 348.6254600854898,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.990203580093139,
+        "force_std": 0.9990266278590898,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.357885766802412
+    },
+    {
+      "rank": 3,
+      "config_id": 10,
+      "params": {
+        "config_id": 10,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 348.6254600854898,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.998477529340944,
+        "force_std": 1.0160495804812,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.3573905082395621
+    },
+    {
+      "rank": 4,
+      "config_id": 23,
+      "params": {
+        "config_id": 23,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 348.6254600854898,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 19.998364191926054,
+        "force_std": 1.0194767487906362,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.35729113840098164
+    },
+    {
+      "rank": 5,
+      "config_id": 9,
+      "params": {
+        "config_id": 9,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 488.0756441196858,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.973775289588474,
+        "force_std": 1.000340522872749,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.34674748432171515
+    },
+    {
+      "rank": 6,
+      "config_id": 20,
+      "params": {
+        "config_id": 20,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 488.0756441196858,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 20.000341773976913,
+        "force_std": 1.0006360262916507,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.34673886687460914
+    },
+    {
+      "rank": 7,
+      "config_id": 8,
+      "params": {
+        "config_id": 8,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 488.0756441196858,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.99701625711144,
+        "force_std": 1.006411904305921,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.34657060143877333
+    },
+    {
+      "rank": 8,
+      "config_id": 21,
+      "params": {
+        "config_id": 21,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 488.0756441196858,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 20.018586853118453,
+        "force_std": 1.0121275386101392,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.34640440931544203
+    },
+    {
+      "rank": 9,
+      "config_id": 4,
+      "params": {
+        "config_id": 4,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 705.8271776083053,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 14.991899378690874,
+        "force_std": 0.9944976466273266,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1686342674463564
+    },
+    {
+      "rank": 10,
+      "config_id": 17,
+      "params": {
+        "config_id": 17,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 705.8271776083053,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 20.00914880801106,
+        "force_std": 1.0020699035928857,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1685237754542833
+    },
+    {
+      "rank": 11,
+      "config_id": 5,
+      "params": {
+        "config_id": 5,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 705.8271776083053,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 15.002856603073282,
+        "force_std": 1.0034508152795691,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1685036556754516
+    },
+    {
+      "rank": 12,
+      "config_id": 16,
+      "params": {
+        "config_id": 16,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.07,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 705.8271776083053,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 19.99362946721941,
+        "force_std": 1.0099456043737283,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16840915109509358
+    },
+    {
+      "rank": 13,
+      "config_id": 19,
+      "params": {
+        "config_id": 19,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 813.459406866143,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 19.97353755068946,
+        "force_std": 0.9983911650471211,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1670420940779713
+    },
+    {
+      "rank": 14,
+      "config_id": 18,
+      "params": {
+        "config_id": 18,
+        "target_force": 20.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 813.459406866143,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 19.98362818808483,
+        "force_std": 0.9995510921293788,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1670251726717108
+    },
+    {
+      "rank": 15,
+      "config_id": 6,
+      "params": {
+        "config_id": 6,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 813.459406866143,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.969292628488056,
+        "force_std": 1.0161637469527702,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16678353761616896
+    },
+    {
+      "rank": 16,
+      "config_id": 7,
+      "params": {
+        "config_id": 7,
+        "target_force": 15.0,
+        "path_step_over": 0.01,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 813.459406866143,
+        "path_length": 24.40378220598429,
+        "waypoints": 2500,
+        "mean_force": 14.996187403376005,
+        "force_std": 1.0202442457110503,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16672438978917817
+    },
+    {
+      "rank": 17,
+      "config_id": 2,
+      "params": {
+        "config_id": 2,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 988.1580486516277,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 15.010762824972314,
+        "force_std": 0.9877722202695535,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16535188146707114
+    },
+    {
+      "rank": 18,
+      "config_id": 14,
+      "params": {
+        "config_id": 14,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 988.1580486516277,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 20.02293050986763,
+        "force_std": 1.0057850997674873,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16508891075163679
+    },
+    {
+      "rank": 19,
+      "config_id": 15,
+      "params": {
+        "config_id": 15,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 988.1580486516277,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 19.985667188680324,
+        "force_std": 1.011041781620104,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.1650124653332609
+    },
+    {
+      "rank": 20,
+      "config_id": 3,
+      "params": {
+        "config_id": 3,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.05,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 988.1580486516277,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 15.00211337679078,
+        "force_std": 1.0149233399651207,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16495610343928238
+    },
+    {
+      "rank": 21,
+      "config_id": 12,
+      "params": {
+        "config_id": 12,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 1646.930081086046,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 19.993661079719967,
+        "force_std": 0.9930337281696524,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16163611542966022
+    },
+    {
+      "rank": 22,
+      "config_id": 1,
+      "params": {
+        "config_id": 1,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 1646.930081086046,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 15.011898951918567,
+        "force_std": 0.9957103689105841,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16159700775261462
+    },
+    {
+      "rank": 23,
+      "config_id": 13,
+      "params": {
+        "config_id": 13,
+        "target_force": 20.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.5
+      },
+      "metrics": {
+        "execution_time": 1646.930081086046,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 20.000639568192103,
+        "force_std": 1.0042825439280214,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16147199665548911
+    },
+    {
+      "rank": 24,
+      "config_id": 0,
+      "params": {
+        "config_id": 0,
+        "target_force": 15.0,
+        "path_step_over": 0.005,
+        "path_velocity": 0.03,
+        "quality_threshold": 0.4
+      },
+      "metrics": {
+        "execution_time": 1646.930081086046,
+        "path_length": 49.407902432581395,
+        "waypoints": 10000,
+        "mean_force": 15.005327999341663,
+        "force_std": 1.0079753336450796,
+        "surface_quality": 0.485884728165781,
+        "grinding_coverage": 3000
+      },
+      "score": 0.16141825331964244
+    }
+  ]
+}
