@@ -2,9 +2,10 @@
 
 🤖 **深度优化的 VLA 模型用于机器人磨削系统**
 
-[![License: Apache 2.0   许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)[![许可证：Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]（https://opensource.org/licenses/Apache-2.0）
-[![Python 3.12+   Python 3.12Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)](https://www.python.org/downloads/)[![Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）[![Python 3.12 Python 3.12   Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/ Python -3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/ Python -3.12 -blue.svg)(https://img.shields.io/badge/python - 3.12 -blue.svghttps: / / img.shields。io/badge/ Python -3.12 -blue.svg)（https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields. svg）io/badge/ Python -3.12 -blue.svg)](https://www.python.org/downloads/)[！[Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svg)]（https://www.python.org/downloads/）
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)](https://pytorch.org/)[![PyTorch](https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)](https://pytorch.org/)
+[![License: Apache 2.0] ( https://img.shields.io/badge/License-Apache%202.0-blue.svg)] ( https://opensource.org/licenses/Apache-2.0 )
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)] ( https://www.python.org/downloads/ )
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svg)] ( https://pytorch.org/ )
+
 
 ## 📋 项目简介
 
