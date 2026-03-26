@@ -11,9 +11,11 @@
     "save_dir": "outputs/checkpoints_enhanced",
     "warmup_epochs": 5,
     "clip_grad_norm": 1.0,
-    "ema_decay": 0.995
+    "ema_decay": 0.995,
+    "use_force_input": true,
+    "force_dim": 6
   },
-  "best_val_loss": 4.116097434658871,
-  "best_pixel_error": 4.675434589385986,
-  "training_time_minutes": 736.95594830513
+  "best_val_loss": 4.098017462317446,
+  "best_pixel_error": 4.659449100494385,
+  "training_time_minutes": 256.1558804631233
 }
