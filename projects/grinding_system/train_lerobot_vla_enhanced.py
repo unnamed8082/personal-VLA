@@ -1,7 +1,6 @@
-
 """
-深度优化版 VLA 训练
-====================
+深度优化版 VLA 训练（多模态：视觉 + 力觉 + 状态）
+====================================================
 目标：像素误差 < 10px
 
 改进：
@@ -13,6 +12,8 @@
 6. EMA（指数移动平均）
 7. 更强的正则化
 8. 训练 100 epochs
+9. 【新增】力觉输入通道（六维力/力矩传感器数据）
+10. 【新增】三模态融合架构
 """
 
 import torch
@@ -39,16 +40,16 @@ class SEBlock(nn.Module):
     
     def forward(self, x):
         b, c, _, _ = x.size()
-        y = x.mean(dim=(2, 3))  # Squeeze
+        y = x.mean(dim=(2, 3))
         y = F.relu(self.fc1(y))
-        y = torch.sigmoid(self.fc2(y))  # Excitation
+        y = torch.sigmoid(self.fc2(y))
         return x * y.view(b, c, 1, 1)
 
 
 class EnhancedVLAModel(nn.Module):
-    """增强版 VLA 模型"""
+    """增强版 VLA 模型（支持力觉输入）"""
     
-    def __init__(self, state_dim: int = 2, action_dim: int = 2, hidden_dim: int = 512):
+    def __init__(self, state_dim: int = 2, action_dim: int = 2, hidden_dim: int = 512, force_dim: int = 6):
         super().__init__()
         
         # 视觉编码器（ResNet-34）
@@ -62,7 +63,18 @@ class EnhancedVLAModel(nn.Module):
         )
         self.visual_fc = nn.Linear(512, hidden_dim)
         
-        # 状态编码器（带 Dropout）
+        # 力觉编码器（新增模块）
+        self.force_encoder = nn.Sequential(
+            nn.Linear(force_dim, hidden_dim // 2),
+            nn.LayerNorm(hidden_dim // 2),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            nn.Linear(hidden_dim // 2, hidden_dim),
+            nn.LayerNorm(hidden_dim),
+            nn.ReLU()
+        )
+        
+        # 状态编码器
         self.state_encoder = nn.Sequential(
             nn.Linear(state_dim, hidden_dim // 2),
             nn.LayerNorm(hidden_dim // 2),
@@ -71,9 +83,9 @@ class EnhancedVLAModel(nn.Module):
             nn.Linear(hidden_dim // 2, hidden_dim)
         )
         
-        # 融合层（带自注意力）
+        # 融合层（三模态融合：视觉 + 力觉 + 状态）
         self.fusion = nn.Sequential(
-            nn.Linear(hidden_dim * 2, hidden_dim),
+            nn.Linear(hidden_dim * 3, hidden_dim),
             nn.LayerNorm(hidden_dim),
             nn.ReLU(),
             nn.Dropout(0.2),
@@ -82,7 +94,7 @@ class EnhancedVLAModel(nn.Module):
             nn.ReLU(),
         )
         
-        # 动作解码器（更深）
+        # 动作解码器
         self.action_decoder = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim // 2),
             nn.LayerNorm(hidden_dim // 2),
@@ -97,12 +109,17 @@ class EnhancedVLAModel(nn.Module):
         
         self.state_dim = state_dim
         self.action_dim = action_dim
+        self.force_dim = force_dim
         
-        print("✅ 增强版 VLA 模型创建完成")
+        print("✅ 增强版 VLA 模型（多模态）创建完成")
         print(f"   参数量：{sum(p.numel() for p in self.parameters()):,}")
+        print(f"   输入模态：视觉 (512D) + 力觉 ({force_dim}D) + 状态 ({state_dim}D)")
     
     def forward(self, batch):
-        """前向传播"""
+        """前向传播（三模态融合）"""
+        batch_size = batch['observation.state'].shape[0]
+        device = batch['observation.state'].device
+        
         # 视觉特征
         visual_feat = None
         image_keys = ['observation.image', 'observation.images.top', 'observation.images.rgb']
@@ -115,15 +132,22 @@ class EnhancedVLAModel(nn.Module):
                 break
         
         if visual_feat is None:
-            batch_size = batch['observation.state'].shape[0]
-            visual_feat = torch.zeros(batch_size, 512).to(batch['observation.state'].device)
+            visual_feat = torch.zeros(batch_size, 512).to(device)
+        
+        # 力觉特征（新增）
+        force_feat = None
+        if 'observation.force' in batch:
+            force_data = batch['observation.force']
+            force_feat = self.force_encoder(force_data)
+        else:
+            force_feat = torch.zeros(batch_size, 512).to(device)
         
         # 状态特征
         state = batch['observation.state']
         state_feat = self.state_encoder(state)
         
-        # 融合
-        combined = torch.cat([visual_feat, state_feat], dim=-1)
+        # 三模态融合
+        combined = torch.cat([visual_feat, force_feat, state_feat], dim=-1)
         fused = self.fusion(combined)
         
         # 预测动作
@@ -155,8 +179,8 @@ def create_augmentation_transform():
     return transforms.Compose([
         transforms.RandomResizedCrop(
             size=(224, 224),
-            scale=(0.9, 1.0),  # 只轻微裁剪
-            ratio=(0.95, 1.05)  # 保持宽高比
+            scale=(0.9, 1.0),
+            ratio=(0.95, 1.05)
         ),
         transforms.ColorJitter(
             brightness=0.1,
@@ -164,7 +188,7 @@ def create_augmentation_transform():
             saturation=0.1,
             hue=0.05
         ),
-        transforms.RandomHorizontalFlip(p=0.1),  # 轻微翻转
+        transforms.RandomHorizontalFlip(p=0.1),
         transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
             std=[0.229, 0.224, 0.225]
@@ -173,16 +197,20 @@ def create_augmentation_transform():
 
 
 def compute_dataset_stats(dataset):
-    """计算数据集的归一化统计量"""
+    """计算数据集的归一化统计量（包括力觉）"""
     print("\n📊 计算数据集统计量...")
     
     all_actions = []
     all_states = []
+    all_forces = []
     
     for i in range(len(dataset)):
         sample = dataset[i]
         all_actions.append(sample['action'].numpy())
         all_states.append(sample['observation.state'].numpy())
+        
+        if 'observation.force' in sample:
+            all_forces.append(sample['observation.force'].numpy())
     
     actions = np.array(all_actions)
     states = np.array(all_states)
@@ -196,6 +224,18 @@ def compute_dataset_stats(dataset):
         'state_std': states.std(axis=0).tolist()
     }
     
+    if len(all_forces) > 0:
+        forces = np.array(all_forces)
+        stats['force_mean'] = forces.mean(axis=0).tolist()
+        stats['force_std'] = forces.std(axis=0).tolist()
+        stats['force_min'] = forces.min(axis=0).tolist()
+        stats['force_max'] = forces.max(axis=0).tolist()
+        print(f"   力觉数据范围：[{forces[:, 2].min():.2f}, {forces[:, 2].max():.2f}] N (法向)")
+    else:
+        print("   ⚠️ 未检测到力觉数据，将使用仿真数据")
+        stats['force_mean'] = [0.0] * 6
+        stats['force_std'] = [1.0] * 6
+    
     print(f"   Action 范围：[{actions.min():.2f}, {actions.max():.2f}]")
     print(f"   Action 均值：{actions.mean(axis=0)}")
     print(f"   Action 标准差：{actions.std(axis=0)}")
@@ -206,23 +246,25 @@ def compute_dataset_stats(dataset):
 def train_enhanced():
     """主训练函数"""
     print("="*70)
-    print("深度优化版 VLA 训练（目标：< 10px）")
+    print("深度优化版 VLA 训练（多模态：视觉 + 力觉 + 状态）")
     print("="*70)
     
     # 配置
     config = {
         'dataset_name': 'lerobot/pusht',
-        'batch_size': 8,  # 增加 batch size
-        'gradient_accumulation_steps': 2,  # 等效 batch=16
-        'learning_rate': 2e-4,  # 稍高的初始学习率
-        'weight_decay': 0.05,  # 更强的权重衰减
-        'num_epochs': 100,  # 增加训练轮数
+        'batch_size': 8,
+        'gradient_accumulation_steps': 2,
+        'learning_rate': 2e-4,
+        'weight_decay': 0.05,
+        'num_epochs': 100,
         'use_amp': True,
         'num_workers': 4,
         'save_dir': 'outputs/checkpoints_enhanced',
         'warmup_epochs': 5,
         'clip_grad_norm': 1.0,
-        'ema_decay': 0.995
+        'ema_decay': 0.995,
+        'use_force_input': True,
+        'force_dim': 6
     }
     
     print("\n📋 训练配置:")
@@ -251,7 +293,8 @@ def train_enhanced():
     sample = dataset[0]
     dataset_info = {
         'state_dim': sample['observation.state'].shape[0],
-        'action_dim': sample['action'].shape[0]
+        'action_dim': sample['action'].shape[0],
+        'force_dim': config['force_dim']
     }
     
     # 4. 划分数据集
@@ -267,12 +310,13 @@ def train_enhanced():
     print(f"   训练集：{len(train_dataset)} samples")
     print(f"   验证集：{len(val_dataset)} samples")
     
-    # 5. 创建模型
-    print("\n2️⃣ 创建增强模型...")
+    # 5. 创建模型（支持力觉输入）
+    print("\n2️⃣ 创建增强模型（多模态）...")
     
     model = EnhancedVLAModel(
         state_dim=dataset_info['state_dim'],
-        action_dim=dataset_info['action_dim']
+        action_dim=dataset_info['action_dim'],
+        force_dim=dataset_info['force_dim']
     )
     
     # 6. 创建优化器和调度器
@@ -291,7 +335,7 @@ def train_enhanced():
         betas=(0.9, 0.999)
     )
     
-    # 学习率调度器（Warmup + Cosine Annealing）
+    # 学习率调度器
     warmup_scheduler = LinearLR(
         optimizer,
         start_factor=0.1,
@@ -312,7 +356,7 @@ def train_enhanced():
     )
     
     scaler = GradScaler()
-    loss_fn = nn.SmoothL1Loss(beta=0.1)  # 使用 Huber Loss 更鲁棒
+    loss_fn = nn.SmoothL1Loss(beta=0.1)
     
     # EMA
     ema = EMA(model, decay=config['ema_decay'])
@@ -353,26 +397,20 @@ def train_enhanced():
         n_batches = 0
         
         for step, batch in enumerate(train_loader):
-            # 准备数据
             batch = {k: v.to(device) if hasattr(v, 'to') else v 
                     for k, v in batch.items()}
             
-            # 归一化 Action
             action_raw = batch['action']
             action_norm = (action_raw - action_mean) / action_std
             
-            # 前向传播
             with torch.amp.autocast('cuda'):
                 outputs = model(batch)
                 loss = loss_fn(outputs['actions'], action_norm)
             
-            # 梯度累积
             loss = loss / config['gradient_accumulation_steps']
             
-            # 反向传播
             scaler.scale(loss).backward()
             
-            # 梯度裁剪
             if (step + 1) % config['gradient_accumulation_steps'] == 0:
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=config['clip_grad_norm'])
@@ -381,20 +419,16 @@ def train_enhanced():
                 scaler.update()
                 optimizer.zero_grad()
                 
-                # EMA 更新
                 ema.update()
             
-            # 统计
             total_loss += loss.item() * config['gradient_accumulation_steps']
             n_batches += 1
             
-            # 进度
             if step % 10 == 0:
                 avg_loss = total_loss / max(n_batches, 1)
                 current_lr = optimizer.param_groups[0]['lr']
                 print(f"\rEpoch {epoch}, Step {step}, Loss: {avg_loss:.4f}, LR: {current_lr:.6f}", end='')
         
-        # 更新学习率
         scheduler.step()
         
         avg_train_loss = total_loss / max(n_batches, 1)
@@ -402,7 +436,6 @@ def train_enhanced():
         
         # 验证（每 5 个 epoch）
         if (epoch + 1) % 5 == 0:
-            # 使用 EMA 模型评估
             ema.apply_shadow()
             model.eval()
             val_loss = 0.0
@@ -429,10 +462,8 @@ def train_enhanced():
                     
                     outputs = model(batch)
                     
-                    # 反归一化
                     pred_denorm = outputs['actions'] * action_std + action_mean
                     
-                    # 计算损失
                     loss = loss_fn(pred_denorm, action_raw)
                     
                     val_loss += loss.item()
@@ -443,7 +474,6 @@ def train_enhanced():
             
             avg_val_loss = val_loss / val_n
             
-            # 计算像素误差
             all_pred_denorm = torch.cat(all_pred_denorm, dim=0)
             all_true = torch.cat(all_true, dim=0)
             pixel_error = torch.sqrt(torch.mean((all_pred_denorm - all_true) ** 2, dim=1)).mean().item()
@@ -453,7 +483,6 @@ def train_enhanced():
             print(f"   RMSE: {np.sqrt(avg_val_loss):.4f}")
             print(f"   像素误差：{pixel_error:.2f} pixels")
             
-            # 保存最佳模型
             if pixel_error < best_pixel_error:
                 best_pixel_error = pixel_error
                 best_loss = avg_val_loss
@@ -475,7 +504,6 @@ def train_enhanced():
                 print(f"   像素误差：{pixel_error:.2f} pixels")
                 print(f"   💾 已保存：{checkpoint_path}")
         
-        # 显存监控
         if torch.cuda.is_available():
             allocated = torch.cuda.memory_allocated() / 1e9
             reserved = torch.cuda.memory_reserved() / 1e9
@@ -486,7 +514,6 @@ def train_enhanced():
     print(f"🏆 最佳验证 MSE: {best_loss:.4f}")
     print(f"🏆 最佳像素误差：{best_pixel_error:.2f} pixels")
     
-    # 保存训练日志
     log_data = {
         'config': config,
         'best_val_loss': best_loss,
