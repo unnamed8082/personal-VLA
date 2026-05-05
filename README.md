@@ -3,8 +3,8 @@
 🤖 **深度优化的 VLA 模型用于机器人磨削系统**
 
 [![License: Apache 2.0   许可证：Apache 2.0] ( https://img.shields.io/badge/License-Apache%202.0-blue.svg)] ( https://opensource.org/licenses/Apache-2.0 )
-[![Python 3.12+   Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)] ( https://www.python.org/downloads/ )
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)] ( https://pytorch.org/ )
+[![Python 3.12+   Python 3.12Python 3.12](https://img.shields.io/badge/python-3.12+-blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/python-3.12 -blue.svg)] ( https://www.python.org/downloads/ )[![Python 3.12 Python 3.12   Python 3.12](https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/ Python -3.12 -blue.svg)(https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields.io/badge/ Python -3.12 -blue.svg)(https://img.shields.io/badge/python - 3.12 -blue.svghttps: / / img.shields。io/badge/ Python -3.12 -blue.svg)（https://img.shields.io/badge/python-3.12 -blue.svghttps://img.shields. svg）io/badge/ Python -3.12 -blue.svg)] （https://www.python.org/downloads/）
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2+-red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)(https://img.shields.io/badge/PyTorch-2.2 -red.svghttps://img.shields.io/badge/PyTorch-2.2 -red.svg)] ( https://pytorch.org/ )
 
 # 多模态 VLA 打磨系统 - 项目说明
 
@@ -130,7 +130,7 @@
 
 ### 技术创新
 
-1. **国内首个**开源多模态 VLA 打磨系统
+1. ****开源多模态 VLA 打磨系统
 2. **零成本**验证方案（无需真实机器人）
 3. **即插即用**架构（易于扩展其他传感器）
 4. **实时性能**（>100 FPS 推理速度）
@@ -142,7 +142,7 @@
 
 ### 代码文件
 
-projects/grinding_system/
+projects/grinding_system/项目/ grinding_system /
 │
 ├── MULTIMODAL_README.md                # 详细文档
 │
@@ -179,7 +179,7 @@ outputs/
 
 ### 1. 环境安装
 
-```bash   ”“bash
+```bash   ”“bash   “bash”;“bash
 # 克隆仓库
 git clone https://github.com/unnamed8082/personal-VLA.git
 cd VLA
@@ -191,7 +191,7 @@ source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 
 # 安装依赖
-pip install -r requirements.txtPIP install -r requirements.txt
+pip install -r requirements.txtPIP install -r requirements.txtPIP install -r要求。txtPIP install -r requirements.txt
 2. 使用预训练模型推理
 # 测试增强版模型
 python projects/grinding_system/test_enhanced_inference.py \Python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \ python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \python projects/grinding_system/test_enhanced_inference.py \
@@ -221,7 +221,7 @@ SE Block 注意力
     ↓
 状态特征 (2-dim) ──→ 融合层 ──→ 动作解码器 ──→ 输出动作 (2-dim)
                                                       ↓
-                                              (Δx, Δy)
+                                              (Δx, Δy)   (Δx, Δy)
 
 🔧 配置说明
 编辑 config.yaml 文件来自定义训练参数：
